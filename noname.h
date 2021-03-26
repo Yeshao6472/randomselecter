@@ -11,14 +11,17 @@
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
-#include <wx/button.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
+#include <wx/menu.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/sizer.h>
-#include <wx/statbox.h>
+#include <wx/button.h>
 #include <wx/stattext.h>
+#include <wx/sizer.h>
 #include <wx/frame.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -32,14 +35,14 @@ class MyFrame1 : public wxFrame
 	private:
 	
 	protected:
-		wxButton* startbutton;
-		wxButton* stopbutton;
+		wxMenuBar* m_menubar1;
+		wxMenu* m_menu1;
+		wxButton* m_button3;
+		wxButton* m_button4;
+		wxButton* m_button5;
+		wxButton* m_button6;
+		wxStaticText* m_staticText3;
 		wxStaticText* m_staticText2;
-		
-		// Virtual event handlers, overide them in your derived class
-		virtual void startrandom( wxCommandEvent& event ) { event.Skip(); }
-		virtual void stoprandom( wxCommandEvent& event ) { event.Skip(); }
-		
 	
 	public:
 		

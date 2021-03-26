@@ -13,48 +13,54 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
-	wxBoxSizer* bSizer1;
-	bSizer1 = new wxBoxSizer( wxVERTICAL );
+	m_menubar1 = new wxMenuBar( 0 );
+	m_menu1 = new wxMenu();
+	wxMenuItem* m_menuItem1;
+	m_menuItem1 = new wxMenuItem( m_menu1, wxID_ANY, wxString( wxT("关于") ) + wxT('\t') + wxT("CTRL+A"), wxEmptyString, wxITEM_NORMAL );
+	m_menu1->Append( m_menuItem1 );
 	
-	wxStaticBoxSizer* sbSizer2;
-	sbSizer2 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("设置选项") ), wxVERTICAL );
+	m_menubar1->Append( m_menu1, wxT("菜单") ); 
 	
-	startbutton = new wxButton( sbSizer2->GetStaticBox(), wxID_ANY, wxT("开始"), wxDefaultPosition, wxDefaultSize, 0 );
-	sbSizer2->Add( startbutton, 0, wxALL, 5 );
+	this->SetMenuBar( m_menubar1 );
 	
-	stopbutton = new wxButton( sbSizer2->GetStaticBox(), wxID_ANY, wxT("停止"), wxDefaultPosition, wxDefaultSize, 0 );
-	sbSizer2->Add( stopbutton, 0, wxALL, 5 );
+	wxBoxSizer* bSizer3;
+	bSizer3 = new wxBoxSizer( wxVERTICAL );
+	
+	wxGridSizer* gSizer1;
+	gSizer1 = new wxGridSizer( 0, 4, 0, 0 );
+	
+	m_button3 = new wxButton( this, wxID_ANY, wxT("开始"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer1->Add( m_button3, 0, wxALL, 5 );
+	
+	m_button4 = new wxButton( this, wxID_ANY, wxT("停止"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer1->Add( m_button4, 0, wxALL, 5 );
+	
+	m_button5 = new wxButton( this, wxID_ANY, wxT("从文件加载"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer1->Add( m_button5, 0, wxALL, 5 );
+	
+	m_button6 = new wxButton( this, wxID_ANY, wxT("退出"), wxDefaultPosition, wxDefaultSize, 0 );
+	gSizer1->Add( m_button6, 0, wxALL, 5 );
+	
+	m_staticText3 = new wxStaticText( this, wxID_ANY, wxT("注意：从文件加载，每行写一个抽取项目。"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3->Wrap( -1 );
+	gSizer1->Add( m_staticText3, 0, wxALL, 5 );
 	
 	
-	bSizer1->Add( sbSizer2, 1, wxEXPAND, 5 );
+	bSizer3->Add( gSizer1, 1, wxEXPAND, 5 );
 	
-	wxBoxSizer* bSizer2;
-	bSizer2 = new wxBoxSizer( wxHORIZONTAL );
-	
-	m_staticText2 = new wxStaticText( this, wxID_ANY, wxT("数字"), wxPoint( -1,-1 ), wxSize( 1000,-1 ), wxALIGN_CENTRE );
-	m_staticText2->Wrap( 3 );
+	m_staticText2 = new wxStaticText( this, wxID_ANY, wxT("Number"), wxDefaultPosition, wxSize( 1000,150 ), wxALIGN_CENTRE );
+	m_staticText2->Wrap( -1 );
 	m_staticText2->SetFont( wxFont( 32, 70, 90, 90, false, wxEmptyString ) );
 	
-	bSizer2->Add( m_staticText2, 0, wxALL, 5 );
+	bSizer3->Add( m_staticText2, 0, wxALL, 5 );
 	
 	
-	bSizer1->Add( bSizer2, 1, wxEXPAND, 5 );
-	
-	
-	this->SetSizer( bSizer1 );
+	this->SetSizer( bSizer3 );
 	this->Layout();
 	
 	this->Centre( wxBOTH );
-	
-	// Connect Events
-	startbutton->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::startrandom ), NULL, this );
-	stopbutton->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::stoprandom ), NULL, this );
 }
 
 MyFrame1::~MyFrame1()
 {
-	// Disconnect Events
-	startbutton->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::startrandom ), NULL, this );
-	stopbutton->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::stoprandom ), NULL, this );
-	
 }
