@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 '''
-Yeshao
+Author: Yeshao
 '''
 import wx
 import wx.xrc
